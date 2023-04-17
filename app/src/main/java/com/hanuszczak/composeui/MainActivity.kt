@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -33,7 +31,10 @@ fun MainActivityContent() {
     val celsius = remember { mutableStateOf(0) }
     val newCelsius = remember { mutableStateOf("") }
 
-    Column {
+    Column(modifier = Modifier
+        .padding(16.dp)
+        .fillMaxWidth()
+    ) {
         Header(
             image = R.drawable.temperature,
             description = "temperature converter image"
@@ -42,9 +43,14 @@ fun MainActivityContent() {
             temperature = newCelsius.value,
             changed = { newCelsius.value = it }
         )
-        ConvertButton {
-            newCelsius.value.toIntOrNull()?.let {
-                celsius.value = it
+        Row(modifier = Modifier
+            .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            ConvertButton {
+                newCelsius.value.toIntOrNull()?.let {
+                    celsius.value = it
+                }
             }
         }
         TemperatureText(
