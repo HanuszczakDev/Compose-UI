@@ -18,28 +18,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MainActivityContent()
-//            Column {
-//                Text(text = "Hello, welcome to Jetpack Compose")
-//                Hello(name = "everyone")
-//                Hello(name = "Adam")
-//            }
-//            ComposeUITheme {
-//                // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colors.background
-//                ) {
-//                    Greeting("Android")
-//                }
-//            }
         }
     }
 }
-
-//@Composable
-//fun Hello(name: String) {
-//    Text(text = "Hello $name! Welcome to Jetpack Compose.")
-//}
 
 @Composable
 fun MainActivityContent() {
@@ -57,21 +38,4 @@ fun MainActivityContent() {
 @Composable
 fun PreviewMainActivity() {
     MainActivityContent()
-//    Column() {
-//        Hello(name = "everyone")
-//        Hello(name = "Adam")
-//    }
 }
-
-//@Composable
-//fun Greeting(name: String) {
-//    Text(text = "Hello $name!")
-//}
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview() {
-//    ComposeUITheme {
-//        Greeting("Android")
-//    }
-//}
