@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -30,12 +31,39 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainActivityContent() {
     val celsius = remember { mutableStateOf(0) }
+    val newCelsius = remember { mutableStateOf("") }
 
     Column {
-        Header(image = R.drawable.temperature, description = "temperature converter image")
-        ConvertButton { celsius.value = 20 }
-        TemperatureText(celsius.value)
+        Header(
+            image = R.drawable.temperature,
+            description = "temperature converter image"
+        )
+        EnterTemperature(
+            temperature = newCelsius.value,
+            changed = { newCelsius.value = it }
+        )
+        ConvertButton {
+            newCelsius.value.toIntOrNull()?.let {
+                celsius.value = it
+            }
+        }
+        TemperatureText(
+            celsius.value
+        )
     }
+}
+
+@Composable
+fun EnterTemperature(temperature: String, changed: (String) -> Unit) {
+    TextField(
+        value = temperature,
+        label = {
+            Text(text = "Enter temperature in Celsius")
+        },
+        onValueChange = changed,
+        modifier = Modifier
+            .fillMaxWidth()
+    )
 }
 
 @Composable
