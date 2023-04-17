@@ -24,9 +24,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainActivityContent() {
+    Header(image = R.drawable.temperature, description = "temperature converter image")
+}
+
+@Composable
+fun Header(image: Int, description: String) {
     Image(
-        painter = painterResource(id = R.drawable.temperature),
-        contentDescription = "temperature converter image",
+        painter = painterResource(image),
+        contentDescription = description,
         modifier = Modifier
             .height(180.dp)
             .fillMaxWidth(),
