@@ -3,6 +3,7 @@ package com.hanuszczak.composeui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -16,7 +17,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Text(text = "Hello, welcome to Jetpack Compose")
+            Column {
+                Text(text = "Hello, welcome to Jetpack Compose")
+                Hello(name = "everyone")
+                Hello(name = "Adam")
+            }
 //            ComposeUITheme {
 //                // A surface container using the 'background' color from the theme
 //                Surface(
@@ -28,6 +33,11 @@ class MainActivity : ComponentActivity() {
 //            }
         }
     }
+}
+
+@Composable
+fun Hello(name: String) {
+    Text(text = "Hello $name! Welcome to Jetpack Compose.")
 }
 
 //@Composable
